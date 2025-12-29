@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - NYOTA Loans</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --accent: #FFD23F;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --success: #06D6A0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #F8F9FA 0%, #E8ECEF 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 12px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E8ECEF;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        input.error-input {
+            border-color: #dc3545;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+            min-height: 44px;
+        }
+
+        .btn:hover {
+            background: #ff5520;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            color: #999;
+            position: relative;
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #E8ECEF;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 18px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 11px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .success-message {
+            background: var(--success);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: none;
+            font-size: 13px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .back-home a {
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .back-home a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 25px 20px;
+            }
+
+            .logo h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <h1>Create Account</h1>
+                <p>Start your journey to financial freedom</p>
+            </div>
+
+            <div id="successMessage" class="success-message">
+                Account created successfully! Redirecting...
+            </div>
+
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="John Doe">
+                    <div class="error" id="nameError">Please enter your full name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="0712345678">
+                    <div class="error" id="phoneError">Please enter a valid phone number (07XXXXXXXX or 01XXXXXXXX)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="idNumber">ID Number</label>
+                    <input type="text" id="idNumber" name="idNumber" required placeholder="12345678">
+                    <div class="error" id="idError">Please enter a valid ID number (7-8 digits)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    <div class="error" id="emailError">Please enter a valid email</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                    <div class="error" id="passwordError">Password must be at least 6 characters</div>
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">Create Account</button>
+            </form>
+
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('signupForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        // Check if already logged in - redirect to eligibility if true
+        if (localStorage.getItem('nyota_logged_in') === 'true') {
+            window.location.href = 'eligibility.html';
+        }
+
+        // Individual field validators
+        function validateName() {
+            const fullName = document.getElementById('fullName');
+            const nameError = document.getElementById('nameError');
+            const value = fullName.value.trim();
+            
+            if (value.length < 3) {
+                nameError.classList.add('show');
+                fullName.classList.add('error-input');
+                return false;
+            } else {
+                nameError.classList.remove('show');
+                fullName.classList.remove('error-input');
+                return true;
+            }
+        }
+
+        function validatePhone() {
+            const phone = document.getElementById('phone');
+            const phoneError = document.getElementById('phoneError');
+            const value = phone.value.trim();
+            const phoneRegex = /^(07|01)\d{8}$/;
+            
+            if (!phoneRegex.test(value)) {
+                phoneError.classList.add('show');
+                phone.classList.add('error-input');
+                return false;
+            } else {
+                phoneError.classList.remove('show');
+                phone.classList.remove('error-input');
+                return true;
+            }
+        }
+
+        function validateID() {
+            const idNumber = document.getElementById('idNumber');
+            const idError = document.getElementById('idError');
+            const value = idNumber.value.trim();
+            
+            if (value.length < 7 || value.length > 8 || !/^\d+$/.test(value)) {
+                idError.classList.add('show');
+                idNumber.classList.add('error-input');
+                return false;
+            } else {
+                idError.classList.remove('show');
+                idNumber.classList.remove('error-input');
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const value = email.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(value)) {
+                emailError.classList.add('show');
+                email.classList.add('error-input');
+                return false;
+            } else {
+                emailError.classList.remove('show');
+                email.classList.remove('error-input');
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            const password = document.getElementById('password');
+            const passwordError = document.getElementById('passwordError');
+            const value = password.value;
+            
+            if (value.length < 6) {
+                passwordError.classList.add('show');
+                password.classList.add('error-input');
+                return false;
+            } else {
+                passwordError.classList.remove('show');
+                password.classList.remove('error-input');
+                return true;
+            }
+        }
+
+        // Validate all fields
+        function validateForm() {
+            const isNameValid = validateName();
+            const isPhoneValid = validatePhone();
+            const isIDValid = validateID();
+            const isEmailValid = validateEmail();
+            const isPasswordValid = validatePassword();
+            
+            return isNameValid && isPhoneValid && isIDValid && isEmailValid && isPasswordValid;
+        }
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!validateForm()) {
+                return;
+            }
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating Account...';
+
+            // Get form data
+            const userData = {
+                fullName: document.getElementById('fullName').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                idNumber: document.getElementById('idNumber').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                password: document.getElementById('password').value,
+                createdAt: new Date().toISOString()
+            };
+
+            // Save to localStorage
+            localStorage.setItem('nyota_user', JSON.stringify(userData));
+            
+            // IMPORTANT: Set login session to prevent redirect loop
+            localStorage.setItem('nyota_logged_in', 'true');
+            localStorage.setItem('nyota_session', JSON.stringify({
+                isLoggedIn: true,
+                userId: userData.phone,
+                loginTime: new Date().toISOString()
+            }));
+
+            // Show success message
+            successMessage.classList.add('show');
+
+            // Redirect to eligibility page
+            setTimeout(() => {
+                window.location.href = 'eligibility.html';
+            }, 1500);
+        });
+
+        // Real-time validation - validate individual fields only
+        document.getElementById('fullName').addEventListener('blur', validateName);
+        document.getElementById('phone').addEventListener('blur', validatePhone);
+        document.getElementById('idNumber').addEventListener('blur', validateID);
+        document.getElementById('email').addEventListener('blur', validateEmail);
+        document.getElementById('password').addEventListener('blur', validatePassword);
+
+        // Remove error on input
+        document.getElementById('fullName').addEventListener('input', function() {
+            if (this.value.trim().length >= 3) {
+                document.getElementById('nameError').classList.remove('show');
+                this.classList.remove('error-input');
+            }
+        });
+
+        document.getElementById('phone').addEventListener('input', function() {
+            document.getElementById('phoneError').classList.remove('show');
+            this.classList.remove('error-input');
+        });
+
+        document.getElementById('idNumber').addEventListener('input', function() {
+            document.getElementById('idError').classList.remove('show');
+            this.classList.remove('error-input');
+        });
+
+        document.getElementById('email').addEventListener('input', function() {
+            document.getElementById('emailError').classList.remove('show');
+            this.classList.remove('error-input');
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            document.getElementById('passwordError').classList.remove('show');
+            this.classList.remove('error-input');
+        });
+    </script>
+</body>
+</html>
