@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Mkopo Chapchap - Savings & Loan Application</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Mkopo Chapchap - Savings & Loan Application</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1A5F7A;
-            --secondary-color: #159895;
-            --background-color: #F8F9FA;
-            --text-color: #333;
-            --accent-color: #57C5B6;
-            --light-accent: #9BE8D8;
+            --primary: #FF6B35;
+            --secondary: #004E89;
+            --accent: #FFD23F;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --success: #06D6A0;
         }
 
         * {
@@ -22,10 +22,10 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--background-color) 0%, #E9ECEF 100%);
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, var(--light) 0%, #E8ECEF 100%);
             line-height: 1.6;
-            color: var(--text-color);
+            color: var(--dark);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -35,7 +35,7 @@
 
         .loan-container {
             background-color: white;
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.07);
             width: 100%;
             max-width: 700px;
@@ -51,7 +51,7 @@
             left: 0;
             width: 100%;
             height: 6px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(to right, var(--primary), var(--accent));
         }
 
         .loan-header {
@@ -60,7 +60,8 @@
         }
 
         .loan-header h1 {
-            color: var(--primary-color);
+            font-family: 'Sora', sans-serif;
+            color: var(--dark);
             margin-bottom: 20px;
             font-weight: 700;
             position: relative;
@@ -74,31 +75,48 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: var(--accent-color);
+            background: var(--primary);
         }
 
         .recent-loans {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary), #ff5520);
             padding: 5px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 10px;
             text-align: center;
             color: white;
-            font-weight: 500;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.2);
         }
 
         .savings-info {
-            background-color: #F0F4F8;
-            border-left: 4px solid var(--primary-color);
+            background-color: rgba(255, 107, 53, 0.05);
+            border-left: 4px solid var(--primary);
             padding: 8px;
             margin-bottom: 10px;
-            border-radius: 8px;
+            border-radius: 12px;
+        }
+
+        .savings-info h2 {
+            font-family: 'Sora', sans-serif;
+            color: var(--dark);
+            margin-bottom: 5px;
+            margin-left: 10%;
+        }
+
+        .savings-info p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .savings-info strong {
+            color: var(--primary);
         }
 
         .savings-steps {
             background-color: white;
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
+            border: 2px solid #E8ECEF;
+            border-radius: 12px;
             padding: 10px;
         }
 
@@ -107,7 +125,7 @@
             align-items: center;
             margin-bottom: 7px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #F0F0F0;
+            border-bottom: 1px solid #E8ECEF;
         }
 
         .savings-step:last-child {
@@ -116,7 +134,7 @@
         }
 
         .step-number {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary), #ff5520);
             color: white;
             width: 30px;
             height: 30px;
@@ -126,20 +144,23 @@
             justify-content: center;
             margin-right: 15px;
             font-weight: bold;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
         }
 
         .step-details {
             flex-grow: 1;
+            color: #666;
         }
 
         .step-details strong {
-            color: var(--secondary-color);
+            color: var(--dark);
+            font-weight: 700;
         }
 
         .copy-till-btn {
             width: 70%;
             padding: 9px;
-            background: linear-gradient(135deg, greenyellow, green);
+            background: linear-gradient(135deg, var(--success), #05c092);
             color: white;
             border: none;
             border-radius: 28px;
@@ -148,31 +169,41 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-left: 30%;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(6, 214, 160, 0.2);
+        }
+
+        .copy-till-btn:hover {
+            background: linear-gradient(135deg, #05c092, var(--success));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(6, 214, 160, 0.3);
         }
 
         .verify-button {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary), #ff5520);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
             margin-top: 20px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.2);
         }
 
         .verify-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(21, 152, 149, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
         }
 
         .footer {
             text-align: center;
             margin-top: 20px;
-            color: var(--secondary-color);
+            color: #666;
             font-size: 0.9em;
         }
 
@@ -182,7 +213,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             display: none;
             justify-content: center;
             align-items: center;
@@ -191,12 +222,24 @@
 
         .modal-content {
             background-color: white;
-            border-radius: 16px;
+            border-radius: 20px;
             width: 90%;
             max-width: 400px;
             padding: 30px;
             text-align: center;
             position: relative;
+            animation: zoomIn 0.3s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .modal-image {
@@ -205,6 +248,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
+            border: 3px solid var(--primary);
         }
 
         .modal-button {
@@ -212,45 +256,65 @@
             height: 40px;
             border-radius: 50%;
             margin-top: -30px;
-            background-color: var(--primary-color);
+            background-color: var(--primary);
             color: white;
             text-align: center;
             align-content: center;
             margin-left: 95%;
             font-size: 1.5em;
-            font-weight: bolder;            
+            font-weight: bolder;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
         }
 
         .modal-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(21, 152, 149, 0.2);
+            background-color: #ff5520;
+            transform: scale(1.1);
         }
 
         .modal-label {
+            font-family: 'Sora', sans-serif;
             font-size: 1.2em;
-            color: var(--primary-color);
+            color: var(--dark);
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .modal-input {
             width: 100%;
             padding: 12px;
-            border: 1.5px solid #E0E0E0;
-            border-radius: 8px;
+            border: 2px solid #E8ECEF;
+            border-radius: 10px;
             margin-bottom: 20px;
             resize: none;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
         .modal-verify-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, greenyellow, green);
+            background: linear-gradient(135deg, var(--success), #05c092);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(6, 214, 160, 0.2);
+        }
+
+        .modal-verify-btn:hover {
+            background: linear-gradient(135deg, #05c092, var(--success));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(6, 214, 160, 0.3);
         }
 
         .loading-overlay {
@@ -259,7 +323,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
             display: none;
             justify-content: center;
             align-items: center;
@@ -270,7 +334,7 @@
             width: 50px;
             height: 50px;
             border: 4px solid white;
-            border-top: 4px solid var(--primary-color);
+            border-top: 4px solid var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -278,6 +342,12 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .loan-header h1 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -288,7 +358,7 @@
 
     <div class="loan-container">
         <div class="loan-header">
-            <h1> Mkopo Chapchap</h1>
+            <h1>Mkopo Chapchap</h1>
         </div>
 
         <div class="recent-loans" id="recentLoansText">
@@ -296,8 +366,8 @@
         </div>
 
         <div class="savings-info">
-            <h2 style="color: var(--primary-color); margin-bottom: 5px; margin-left: 10%;">Account Savings</h2>
-            <p style="font-size: 13px;"> Based on your selected loan amount of <strong id="limit">Ksh 7,000</strong>, FLEX BS SOLUTIONS requires you to save <strong id="savingsamount">Ksh 150</strong> (Selected Savings Plan) to your  Mkopo Chapchap account. Your savings will be withdrawable exclusively upon successful completion of your first loan repayment cycle.</p>
+            <h2>Account Savings</h2>
+            <p>Based on your selected loan amount of <strong id="limit">Ksh 7,000</strong>, HUBIO DIGITAL SOLUTIONS requires you to save <strong id="savingsamount">Ksh 150</strong> (Selected Savings Plan) to your Mkopo Chapchap account. Your savings will be withdrawable exclusively upon successful completion of your first loan repayment cycle.</p>
         </div>
 
         <div class="savings-steps">
@@ -316,7 +386,7 @@
             <div class="savings-step">
                 <div class="step-number">3</div>
                 <div class="step-details">
-                    Enter Till Number: <strong>4098264</strong>
+                    Enter Till Number: <strong>5223949</strong>
                 </div>
             </div>
             <div class="savings-step">
@@ -331,7 +401,7 @@
         <button class="verify-button" onclick="openVerificationModal()">Verify Payment</button>
 
         <div class="footer">
-            ©  Mkopo Chapchap 2024 | Regulated by KFSA
+            © Mkopo Chapchap 2024 | Regulated by KFSA
         </div>
     </div>
 
@@ -340,7 +410,7 @@
             <button class="modal-button" onclick="closeVerificationModal()">X</button>
             <img src="assets/mpesa.png" alt="Verification" class="modal-image">
             <div class="modal-label">Verify Your Payment</div>
-            <p style="font-size: 12px; text-align: left; margin-bottom: 15px;">Copy the entire confirmation message you received from M-PESA after making payments and paste in the text field below then click verify.</p>
+            <p style="font-size: 12px; text-align: left; margin-bottom: 15px; color: #666;">Copy the entire confirmation message you received from M-PESA after making payments and paste in the text field below then click verify.</p>
             <textarea class="modal-input" rows="4" placeholder="Paste M-PESA confirmation message here"></textarea>
             <button class="modal-verify-btn" onclick="verifyTransaction()">Verify Transaction Message</button>
         </div>
@@ -379,9 +449,8 @@
         setInterval(updateRecentLoansText, 3000);
 
         function copyTillNumber() {
-            const tillNumber = '4098264';
+            const tillNumber = '5223949';
             navigator.clipboard.writeText(tillNumber).then(() => {
-                //alert('Till number copied to clipboard!');
                 let tillno = document.getElementById('tillno');
                 tillno.textContent = "Till Number Copied";
             }).catch(err => {
@@ -392,20 +461,19 @@
         const loadingOverlay = document.querySelector('.loading-overlay');
 
         function showLoading() {
-        loadingOverlay.style.display = 'flex';
+            loadingOverlay.style.display = 'flex';
         }
 
         function hideLoading() {
-        loadingOverlay.style.display = 'none';
+            loadingOverlay.style.display = 'none';
         }
 
         function openVerificationModal() {
-
             showLoading();
-        setTimeout(() => {
-            document.getElementById('verificationModal').style.display = 'flex';
-            hideLoading();
-        }, 2000);            
+            setTimeout(() => {
+                document.getElementById('verificationModal').style.display = 'flex';
+                hideLoading();
+            }, 2000);            
         }
 
         function closeVerificationModal() {
@@ -414,16 +482,16 @@
 
         function verifyTransaction() {
             const input = document.querySelector('.modal-input').value;
-            const name = "FLEX BS SOLUTIONS";
+            const name = "HUBIO DIGITAL SOLUTIONS";
             
             if ((input.trim().length > 0) && (input.includes(name))) {
                 document.getElementById('verificationModal').style.display = 'none';
                 showLoading();
-        setTimeout(() => {
-            localStorage.setItem('loanapplied','loanapplied');
-            window.location.href = 'reviewpage.html';
-            hideLoading();
-        }, 2000);                  
+                setTimeout(() => {
+                    localStorage.setItem('loanapplied','loanapplied');
+                    window.location.href = 'reviewpage.html';
+                    hideLoading();
+                }, 2000);                  
             } else {
                 alert('Please enter a valid confirmation message');
             }
