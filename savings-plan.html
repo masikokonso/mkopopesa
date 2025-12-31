@@ -338,6 +338,7 @@
         proceedBtn.addEventListener('click', () => {
             if (selectedOption) {
                 localStorage.setItem('limit', selectedOption.limit);
+                localStorage.setItem('saveamount', selectedOption.savings);
                 window.location.href = 'Verification.html';
             }
         });
